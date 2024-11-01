@@ -1,0 +1,85 @@
+@use "./mixins.scss" as mixins;
+@use "./var.scss" as var;
+
+/**
+ * 自定义vant主题色
+ */
+:root:root {
+  // Component Colors
+  --van-primary-color: var(--wdz-color-primary);
+  --van-success-color: var(--wdz-color-success);
+  --van-danger-color: var(--wdz-color-error);
+  --van-warning-color: var(--wdz-color-error);
+  --van-text-color: var(--wdz-text-color);
+  --van-loading-text-color: var(--wdz-color-primary);
+  --van-loading-spinner-color: var(--wdz-color-primary);
+}
+
+// 自定义万店掌tab切换样式
+.wdz-tabs {
+  .van-tabs__nav {
+    display: inline-flex;
+    height: 28px;
+    padding: 2px !important;
+    background-color: transparent;
+    background-color: #e5e5e5;
+    border-radius: 6px;
+  }
+  .van-tab--active {
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px 0 #0003;
+  }
+  .van-tabs__line {
+    display: none;
+  }
+}
+
+// 复选框样式
+.van-checkbox {
+  .van-checkbox__icon .van-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // 复选框半选样式
+  @include mixins.when(indeterminate) {
+    .van-checkbox__icon:not(.van-checkbox__icon--checked) {
+      .van-icon {
+        color: var.$color-primary;
+        background-color: rgb(255 153 0 / 10%);
+        border: 2.1px solid var.$color-primary;
+        &::before {
+          line-height: 0;
+          content: '\e6ee';
+          transform: scale(0.6, 2.6);
+        }
+      }
+    }
+  }
+}
+
+// 搜索框
+body {
+  .van-search {
+    padding: 8px 16px;
+  }
+  .van-search__content {
+    background: #f0f0f0;
+    border-radius: 8px;
+  }
+}
+.wdz-search {
+  .van-field__left-icon {
+    display: none;
+  }
+  .van-field__right-icon .van-icon-search {
+    font-weight: bold;
+    color: var.$color-primary;
+  }
+  .van-field--disabled .van-field__right-icon .van-icon-search {
+    color: #c8c9cc;
+    pointer-events: none;
+  }
+}

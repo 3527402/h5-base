@@ -1,0 +1,15 @@
+/**
+ * 定义样式变量
+ */
+$color-primary: #f90; // 主题色
+$color-error: #f11; // 错误颜色
+$color-success: #1cbb61; // 成功颜色
+
+$text-color: #333; // 文字颜色
+
+:root {
+  --wdz-color-primary: #f90;
+  --wdz-color-error: #f11;
+  --wdz-color-success: #1cbb61;
+  --wdz-text-color: #333;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>h5子项目模板</title>
+    <!-- 测试服才启用vconsole -->
+    <% if (process.env.VUE_APP_MODE === 'testing') { %>
+    <script src="https://<%= process.env.VUE_APP_OSS_HOST %>/static/vconsole.min.js"></script>
+    <script type="text/javascript">
+      new VConsole();
+    </script>
+    <% } %>
+
+    <!-- process.env.VUE_APP_OSS_HOST: ovopark-web-sdk.oss-cn-hangzhou.aliyuncs.com -->
+    <!-- 根据 运行环境 区分引入vue版本 -->
+    <script src="https://<%= process.env.VUE_APP_OSS_HOST %>/static/vue3/index.<%= process.env.VUE_APP_MODE === 'prod' ? 'min.' : '' %>js"></script>
+
+    <!-- 根据各平台、环境配置的 SDK_PATH 引入资源 -->
+    <!-- bridge.js -->
+    <script src="https://<%= process.env.VUE_APP_OSS_HOST %>/bridge/<%= process.env.VUE_APP_SDK_PATH %>/bridge.umd.js?loading=1"></script>
+    <!-- wdz组件 -->
+    <script src="https://<%= process.env.VUE_APP_OSS_HOST %>/wdz-vant/<%= process.env.VUE_APP_SDK_PATH %>/vant.min.js"></script>
+    <link rel="stylesheet" href="https://<%= process.env.VUE_APP_OSS_HOST %>/wdz-vant/<%= process.env.VUE_APP_SDK_PATH %>/index.css" />
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but 万店掌 doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

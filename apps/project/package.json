@@ -1,0 +1,21 @@
+{
+  "name": "@h5/project",
+  "version": "1.0.0",
+  "description": "h5子项目模板",
+  "private": true,
+  "scripts": {
+    "dev": "vue-cli-service serve",
+    "analyzer": "cross-env webpack_analyzer=true vue-cli-service build",
+    "build": "vue-cli-service build",
+    "build-miniso": "vue-cli-service build --mode miniso",
+    "build-testing": "vue-cli-service build --mode testing",
+    "build-opretail": "vue-cli-service build --mode opretail",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-plugin-typescript": "^5.0.8"
+  }
+}

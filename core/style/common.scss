@@ -1,0 +1,142 @@
+@use "./normalize.scss";
+@use "./vant.scss";
+@use "./var.scss" as var;
+
+body {
+  color: var.$text-color;
+}
+
+// 层级最高
+.layer-top {
+  z-index: 999999 !important;
+}
+
+// flex垂直居中
+.flex-middle,
+.center {
+  display: flex;
+  align-items: center;
+}
+.flex-1 {
+  flex: 1;
+}
+
+// 水平垂直居中
+.center {
+  justify-content: center;
+}
+.abs-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.t-center {
+  text-align: center;
+}
+.t-left {
+  text-align: left;
+}
+.t-right {
+  text-align: right;
+}
+
+// 主题色，hover主题色
+.c-primary {
+  color: var.$color-primary;
+}
+.hover-primary {
+  &:hover {
+    color: var.$color-primary;
+  }
+}
+.c-error {
+  color: var.$color-error;
+}
+.c-success {
+  color: var.$color-success;
+}
+
+// 颜色值，255 * 百分比的值，例: c-b2 -> #b2b2b2
+// 百分比  0, .1, .2, .3, .4, .5, .6, .7, .8, .9, 1
+$colors: 00, 1a, 33, 4c, 66, 7f, 99, b2, cc, e5, ff;
+$hash: '#';
+@each $c in $colors {
+  .c-#{$c} {
+    color: #{$hash}#{$c}#{$c}#{$c};
+  }
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+// 字体从 10 到 24，例: f-14
+@for $size from 10 to 25 {
+  .f-#{$size} {
+    font-size: $size + px;
+  }
+}
+.f-0 {
+  font-size: 0;
+}
+.strong {
+  font-weight: 600;
+}
+
+// 边距样式，例: mt-4
+$distances: 2, 4, 8, 10, 12, 16, 20, 24;
+$directions: (
+  t: top,
+  r: right,
+  b: bottom,
+  l: left,
+  h: (right, left),
+  v: (top, bottom)
+);
+@each $dis in $distances {
+  .p-#{$dis} {
+    padding: $dis + px;
+  }
+  .m-#{$dis} {
+    margin: $dis + px;
+  }
+  @each $dir, $dir-full in $directions {
+    @if index('h' 'v', $dir) {
+      .p#{$dir}-#{$dis} {
+        @each $dir2 in $dir-full {
+          padding-#{$dir2}: $dis + px;
+        }
+      }
+      .m#{$dir}-#{$dis} {
+        @each $dir2 in $dir-full {
+          margin-#{$dir2}: $dis + px;
+        }
+      }
+    } @else {
+      .p#{$dir}-#{$dis} {
+        padding-#{$dir-full}: $dis + px;
+      }
+      .m#{$dir}-#{$dis} {
+        margin-#{$dir-full}: $dis + px;
+      }
+    }
+  }
+}
+
+// 文字超出省略
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  white-space: nowrap;
+}
+.nowrap {
+  white-space: nowrap;
+}
+
+// 项目内的svg图标
+.wdz-svg {
+  display: inline-block;
+  font-size: 16px;
+}
